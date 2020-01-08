@@ -37,7 +37,19 @@ Traveller.prototype.calculateTotalDistanceTravelled = function () {
 };
 
 Traveller.prototype.getUniqueModesOfTransport = function () {
-  return [...new Set(this.journeys.map(mode => mode.transport))];
+
+  const modesOfTransport = this.journeys.map((journeys) => {
+   return journeys.transport;
+  })
+   const unique = modesOfTransport.filter((transport, index, array) => {
+    return array.indexOf(transport) === index;
+   })
+
+   return unique;
+
+
+   //used the set and spread syntax originally, but decided to go back and try doing it with filter and map instead.
+  // return [...new Set(this.journeys.map(mode => mode.transport))];
 };
 
 
